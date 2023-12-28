@@ -2,10 +2,7 @@
   <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
     <div class="row gx-lg-5 align-items-center mb-5">
       <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-        <h1
-          class="my-5 display-5 fw-bold ls-tight"
-          style="color: hsl(218, 81%, 95%)"
-        >
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
           The best offer <br />
           <span style="color: hsl(218, 81%, 75%)">for your business</span>
         </h1>
@@ -18,19 +15,12 @@
       </div>
 
       <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-        <div
-          id="radius-shape-1"
-          class="position-absolute rounded-circle shadow-5-strong"
-        ></div>
-        <div
-          id="radius-shape-2"
-          class="position-absolute shadow-5-strong"
-        ></div>
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
+            <form [formGroup]="formLogin" (ngSubmit)="submitForm()" novalidate>
               <!-- <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
@@ -58,25 +48,18 @@
                 </div>
               </div> -->
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3"
-                  >Seu e-mail</label
-                >
+              <div class="mb-4">
+                <label class="form-label fw-bold" for="email">Insira seu e-mail</label>
+                <input type="email" id="email" class="form-control" formControlName="email"
+                  placeholder="email@email.com" />
               </div>
 
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  id="form3Example4"
-                  class="form-control"
-                />
-                <label class="form-label" for="form3Example4">Sua senha</label>
+              <div class="mb-4">
+                <label class="form-label fw-bold" for="password">Insira sua senha</label>
+                <input type="password" id="password" class="form-control" formControlName="password"
+                  placeholder="Mínimo 6 caracteres" />
               </div>
 
-              <!-- Checkbox -->
               <!-- <div class="form-check d-flex justify-content-center mb-4">
                 <input
                   class="form-check-input me-2"
@@ -90,15 +73,13 @@
                 </label>
               </div> -->
 
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
+              <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="formLogin.invalid">
                 Cadastrar
               </button>
 
-              <!-- Register buttons -->
               <div class="text-center">
                 <p>ou cadastre-se com:</p>
-
+                <hr/>
                 <button type="button" class="btn btn-link btn-floating mx-auto d-flex align-items-center">
                   <i class="fab fa-google"></i>
                 </button>
@@ -116,6 +97,17 @@
                 </button> -->
               </div>
             </form>
+
+            <div *ngIf="loginSuccess !== null" class="alert {{alert.class}}">
+              {{alert.message}}
+            </div>
+
+            <hr>
+            <pre>
+              {{alert | json}}
+            </pre>
+            loginSuccess: {{loginSuccess}}
+
           </div>
         </div>
       </div>
