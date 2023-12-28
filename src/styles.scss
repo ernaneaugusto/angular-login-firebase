@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+// importing core styling file
+// @import "./fontawesome/scss/fontawesome.scss";
+
+// // our project needs Classic Solid, Brands, and Sharp Solid 
+// @import "./fontawesome/scss/solid.scss";
+// @import "./fontawesome/scss/brands.scss";
+// @import "./fontawesome/scss/sharp-solid.scss";
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import '~mdb-ui-kit/css/mdb.min.css';
+
